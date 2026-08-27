@@ -1,20 +1,8 @@
 """
-generate_sensor_data.py
-
-Task 5 - Environmental Sensor Data Dashboard
 Generates a realistic fake environmental sensor dataset for three ground
 stations (temperature, humidity, pressure, air quality, light intensity,
 GPS position), and writes it out as both JSON (consumed by the dashboard
 webpage) and CSV (for inspection / reporting).
-
-This does not read from real hardware. It is a stand-in data source so the
-dashboard can be developed and demoed before real sensor logs are wired in.
-Swap `generate_dataset()` for a real data loader later without touching the
-webpage - it only depends on the JSON shape produced here.
-
-Usage:
-    python generate_sensor_data.py
-    python generate_sensor_data.py --seed 7 --out-dir ./data
 """
 
 import argparse
@@ -24,11 +12,6 @@ import random
 from datetime import datetime, timedelta, timezone
 
 
-# ---------------------------------------------------------------------------
-# Sensor definitions: realistic ranges + step size (how much a reading can
-# move between consecutive samples). Mirrors the thresholds used by the
-# dashboard's front-end status logic (normal / watch / alert).
-# ---------------------------------------------------------------------------
 SENSOR_DEFS = {
     "temp":     {"unit": "°C",  "step": 0.6, "min": 8,    "max": 42,
                  "normal": (16, 32), "watch": [(10, 16), (32, 38)], "decimals": 1},
